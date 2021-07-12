@@ -13,8 +13,14 @@ namespace MusicStore.Controllers
     {
         public ActionResult Index()
         {
-            var guitars = Repository.GuitarColletction;
+            var guitars = Repository.GuitarCollection;
             return View(guitars);
+        }
+
+        public ActionResult GetByName(string name)
+        {
+            var guitars = Repository.GetGuitarsByName(name);
+            return View("Index", guitars);
         }
 
         public ActionResult Details(int id)

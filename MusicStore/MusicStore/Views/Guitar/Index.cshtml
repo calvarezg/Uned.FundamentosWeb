@@ -10,9 +10,13 @@
 
 <h1>Guitar catalog</h1>
 
+<form asp-controller="Guitar" asp-action="GetByName">
+    <label for="item-name-filter">Filter by name:</label>
+    <input id="item-name-filter" name="name" />
+    <input class="btn btn-primary filter-button" type="submit" value="Go" />
+</form>
 
 <div class="item-catalog">
-
     @foreach (var guitar in Model){
     <div class="item box-shadow">
         <img class="item-img" alt="@guitar.Name" src="@guitar.ImagePath" />

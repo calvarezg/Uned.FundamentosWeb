@@ -30,3 +30,10 @@ img.item-img {
     display: block;
     margin: auto;
 }
+
+input.filter-button {
+    height: 30px;
+    margin: 0;
+    margin-bottom: 4px;
+    padding-top:3px;
+}
