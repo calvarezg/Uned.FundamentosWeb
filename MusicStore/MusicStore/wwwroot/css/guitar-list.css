@@ -9,12 +9,18 @@ div.item-catalog {
 
 div.item {
     float: left;
-    width: 28%;
+    width: 25%;
     text-align: center;
     min-width: 110px;
     padding: 20px;
     margin: 20px;
+    border: solid 1px white;
 }
+
+    div.item:hover {
+        border: solid 1px gray;
+        width: 25%;
+    }
 
 span.item-label {
     display: inline-block;
@@ -35,5 +41,5 @@ input.filter-button {
     height: 30px;
     margin: 0;
     margin-bottom: 4px;
-    padding-top:3px;
+    padding-top: 3px;
 }

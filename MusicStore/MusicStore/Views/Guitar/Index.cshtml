@@ -24,9 +24,9 @@
         <span class="item-detail">@Html.DisplayFor(modelItem => guitar.Name)</span> <br />
         <span class="item-label">@Html.DisplayNameFor(model => model.Price):</span>
         <span class="item-detail">$@Html.DisplayFor(modelItem => guitar.Price)</span> <br />
+        @Html.ActionLink("Details", "Details", new { id = guitar.Id })
     </div>
     }
 </div>
 <br />
 <br />
-@*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |*@

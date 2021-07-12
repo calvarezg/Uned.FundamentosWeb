@@ -25,7 +25,8 @@ namespace MusicStore.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var guitar = Repository.GetById(id);
+            return View(guitar);
         }
 
         public ActionResult Create()

@@ -20,6 +20,11 @@ namespace MusicStore.Models
         [DisplayName("Item Price")]
         public double Price { get; set; }
 
+        public int Year { get; set; }
+
+        [MaxLength(300)]
+        public string Description { get; set; }
+
         public Guitar()
         {
             Id = LastId++;
