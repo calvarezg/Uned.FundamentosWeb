@@ -14,12 +14,14 @@ namespace MusicStore.Models
         public string Name { get; set; }
 
         [DisplayName("Image path:")]
-        [RegularExpression(@"https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)")]
+        [RegularExpression(@"/img/[-a-zA-Z0-9@:%._\+~#=]+.jpg")]
         public string ImagePath { get; set; }
 
         [DisplayName("Item Price")]
+        [Range(0, 10000)]
         public double Price { get; set; }
 
+        [Range(1950, 2021)]
         public int Year { get; set; }
 
         [MaxLength(300)]
@@ -27,7 +29,7 @@ namespace MusicStore.Models
 
         public Guitar()
         {
-            Id = LastId++;
+            Id = ++LastId;
         }
     }
 }

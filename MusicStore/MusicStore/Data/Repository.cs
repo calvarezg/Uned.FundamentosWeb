@@ -23,6 +23,11 @@ namespace MusicStore.Data
             }
         }
 
+        internal static void Add(Guitar guitar)
+        {
+            GuitarCollection.Add(guitar);
+        }
+
         public static Guitar GetById(int id)
         {
             var query = from guitar in GuitarCollection

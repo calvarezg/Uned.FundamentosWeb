@@ -36,10 +36,11 @@ namespace MusicStore.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Guitar guitar)
         {
             try
             {
+                Repository.Add(guitar);
                 return RedirectToAction(nameof(Index));
             }
             catch

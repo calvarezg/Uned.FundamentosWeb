@@ -5,10 +5,14 @@
 }
 
 @section ViewStyles{
-<link href="~/css/guitar-list.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/guitar-list.css" rel="stylesheet" type="text/css" />
 }
 
 <h1>Guitar catalog</h1>
+
+<div>
+    <a asp-action="Create">Add item to catalog</a>
+</div>
 
 <form asp-controller="Guitar" asp-action="GetByName">
     <label for="item-name-filter">Filter by name:</label>
@@ -17,15 +21,16 @@
 </form>
 
 <div class="item-catalog">
-    @foreach (var guitar in Model){
-    <div class="item box-shadow">
-        <img class="item-img" alt="@guitar.Name" src="@guitar.ImagePath" />
-        <span class="item-label">@Html.DisplayNameFor(model => model.Name):</span>
-        <span class="item-detail">@Html.DisplayFor(modelItem => guitar.Name)</span> <br />
-        <span class="item-label">@Html.DisplayNameFor(model => model.Price):</span>
-        <span class="item-detail">$@Html.DisplayFor(modelItem => guitar.Price)</span> <br />
-        @Html.ActionLink("Details", "Details", new { id = guitar.Id })
-    </div>
+    @foreach (var guitar in Model)
+    {
+        <div class="item box-shadow">
+            <img class="item-img" alt="@guitar.Name" src="@guitar.ImagePath" />
+            <span class="item-label">@Html.DisplayNameFor(model => model.Name):</span>
+            <span class="item-detail">@Html.DisplayFor(modelItem => guitar.Name)</span> <br />
+            <span class="item-label">@Html.DisplayNameFor(model => model.Price):</span>
+            <span class="item-detail">$@Html.DisplayFor(modelItem => guitar.Price)</span> <br />
+            @Html.ActionLink("Details", "Details", new { id = guitar.Id })
+        </div>
     }
 </div>
 <br />
