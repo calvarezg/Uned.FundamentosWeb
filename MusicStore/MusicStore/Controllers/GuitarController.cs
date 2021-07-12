@@ -51,15 +51,17 @@ namespace MusicStore.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            var guitar = Repository.GetById(id);
+            return View(guitar);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, Guitar guitar)
         {
             try
             {
+                Repository.Update(id, guitar);
                 return RedirectToAction(nameof(Index));
             }
             catch

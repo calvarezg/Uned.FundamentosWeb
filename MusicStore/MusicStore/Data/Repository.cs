@@ -45,6 +45,16 @@ namespace MusicStore.Data
             return guitars.ToList();
         }
 
+        internal static void Update(int id, Guitar guitarFromUser)
+        {
+            var guitarFromRepository = GetById(id);
+            guitarFromRepository.Name = guitarFromUser.Name;
+            guitarFromRepository.Description = guitarFromUser.Description;
+            guitarFromRepository.Year = guitarFromUser.Year;
+            guitarFromRepository.Price = guitarFromUser.Price;
+            guitarFromRepository.ImagePath = guitarFromUser.ImagePath;
+        }
+
         private static string GenerateText()
         {
             return @"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel vehicula lectus. Suspendisse sed vulputate justo. Curabitur sapien diam, porttitor eget urna nec, sagittis tincidunt dolor. Nam consectetur non velit eget placerat. Sed pulvinar auctor purus, vel rhoncus ligula faucibus ut. Nam ac justo id dolor aliquam viverra quis in nunc. Aliquam eget finibus sem, ornare tincidunt tortor. Nulla vehicula justo enim, a scelerisque enim dignissim a. Nulla vulputate metus et vulputate rutrum. Maecenas lacinia quam a convallis malesuada. ";
