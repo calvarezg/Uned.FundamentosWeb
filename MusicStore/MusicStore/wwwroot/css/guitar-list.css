@@ -1,0 +1,32 @@
+﻿body {
+}
+
+
+div.item-catalog {
+    width: auto;
+    margin: auto;
+}
+
+div.item {
+    float: left;
+    width: 28%;
+    text-align: center;
+    min-width: 110px;
+    padding: 20px;
+    margin: 20px;
+}
+
+span.item-label {
+    display: inline-block;
+    font-weight: bold;
+}
+
+span.item-label {
+    display: inline-block;
+}
+
+img.item-img {
+    width: 90%;
+    display: block;
+    margin: auto;
+}
