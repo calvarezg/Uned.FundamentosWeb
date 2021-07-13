@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Create";
+    var errors = ViewBag.Errors;
 }
 
 <h1>View</h1>
@@ -43,6 +44,16 @@
         </form>
     </div>
 </div>
+
+@if (errors != null)
+{
+    <ul class="text-danger">
+        @foreach (var error in errors)
+        {
+        <li>@error</li>
+        }
+    </ul>
+}
 
 <div>
     <a asp-action="Index">Back to List</a>

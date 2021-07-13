@@ -41,8 +41,16 @@ namespace MusicStore.Controllers
         {
             try
             {
-                Repository.Add(guitar);
-                return RedirectToAction(nameof(Index));
+                if (guitar.IsValid()) 
+                {
+                    Repository.Add(guitar);
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    ViewBag.Errors = guitar.Errors;
+                    return View();
+                }
             }
             catch
             {
