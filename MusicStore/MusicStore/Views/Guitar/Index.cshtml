@@ -21,6 +21,7 @@
     <input class="btn btn-primary filter-button" type="submit" value="Go" />
 </form>
 
+
 <div class="item-catalog">
     @foreach (var guitar in Model)
     {
@@ -29,10 +30,14 @@
             <span class="item-label">@Html.DisplayNameFor(model => model.Name):</span>
             <span class="item-detail">@Html.DisplayFor(modelItem => guitar.Name)</span> <br />
             <span class="item-label">@Html.DisplayNameFor(model => model.Price):</span>
-            <span class="item-detail">$@Html.DisplayFor(modelItem => guitar.Price)</span> <br />
+            <span class="item-price item-detail">$@Html.DisplayFor(modelItem => guitar.Price)</span> <br />
             @Html.ActionLink("Details", "Details", new { id = guitar.Id })
         </div>
     }
 </div>
 <br />
 <br />
+<button class="btn btn-secondary btn-group" onclick="findMostExpensiveItem()">Find most expensive item</button>
+
+
+<script src="~/js/guitar-list.js"></script>

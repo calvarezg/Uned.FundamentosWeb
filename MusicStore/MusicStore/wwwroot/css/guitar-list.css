@@ -5,6 +5,7 @@
 div.item-catalog {
     width: auto;
     margin: auto;
+    display: inline-block;
 }
 
 div.item {
@@ -42,4 +43,8 @@ input.filter-button {
     margin: 0;
     margin-bottom: 4px;
     padding-top: 3px;
+}
+
+div.most-expensive {
+    border-color: red;
 }
