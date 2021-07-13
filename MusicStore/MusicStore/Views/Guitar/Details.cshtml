@@ -1,0 +1,51 @@
+﻿@model MusicStore.Models.Guitar
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+@section ViewStyles{
+    <link href="~/css/item-details.css" rel="stylesheet" type="text/css" />
+}
+<h1>Details</h1>
+
+<div>
+    <h4>Guitar</h4>
+    <hr />
+    <div class="row">
+        <div class="col"><img class="item-details-img" alt="@Html.ValueFor(model => model.Name)" src="@Html.ValueFor(model => model.ImagePath)" /></div>
+        <div class="col">
+            <dl class="row">
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-9">
+                    $@Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Year)
+                </dt>
+                <dd class="col-sm-9">
+                    @Html.DisplayFor(model => model.Year)
+                </dd>
+                <dt class="col-sm-3">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-9 text-justify">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    <a asp-action="Index">Back to List</a>
+</div>

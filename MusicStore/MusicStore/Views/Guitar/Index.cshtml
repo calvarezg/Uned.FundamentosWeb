@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MusicStore.Models.Guitar>
+
+@{
+    ViewData["Title"] = "Guitar List";
+    var searchCriteria = ViewBag.SearchCriteria;
+}
+
+@section ViewStyles{
+    <link href="~/css/guitar-list.css" rel="stylesheet" type="text/css" />
+}
+
+<h1>Guitar catalog</h1>
+
+<div>
+    <a asp-action="Create">Add item to catalog</a>
+</div>
+
+<form asp-controller="Guitar" asp-action="GetByName">
+    <label for="item-name-filter">Filter by name:</label>
+    <input id="item-name-filter" name="name" value="@searchCriteria" />
+    <input class="btn btn-primary filter-button" type="submit" value="Go" />
+</form>
+
+
+<div class="item-catalog">
+    @foreach (var guitar in Model)
+    {
+        <div class="item box-shadow">
+            <img class="item-img" alt="@guitar.Name" src="@guitar.ImagePath" />
+            <span class="item-label">@Html.DisplayNameFor(model => model.Name):</span>
+            <span class="item-detail">@Html.DisplayFor(modelItem => guitar.Name)</span> <br />
+            <span class="item-label">@Html.DisplayNameFor(model => model.Price):</span>
+            <span class="item-price item-detail">$@Html.DisplayFor(modelItem => guitar.Price)</span> <br />
+            @Html.ActionLink("Details", "Details", new { id = guitar.Id })
+        </div>
+    }
+</div>
+<br />
+<br />
+<button class="btn btn-secondary btn-group" onclick="findMostExpensiveItem()">Find most expensive item</button>
+
+
+<script src="~/js/guitar-list.js"></script>
