@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Guitar List";
+    var searchCriteria = ViewBag.SearchCriteria;
 }
 
 @section ViewStyles{
@@ -16,7 +17,7 @@
 
 <form asp-controller="Guitar" asp-action="GetByName">
     <label for="item-name-filter">Filter by name:</label>
-    <input id="item-name-filter" name="name" />
+    <input id="item-name-filter" name="name" value="@searchCriteria" />
     <input class="btn btn-primary filter-button" type="submit" value="Go" />
 </form>
 

@@ -20,6 +20,7 @@ namespace MusicStore.Controllers
         public ActionResult GetByName(string name)
         {
             var guitars = Repository.GetGuitarsByName(name);
+            ViewBag.SearchCriteria = name;
             return View("Index", guitars);
         }
 
