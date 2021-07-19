@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MusicStore.Models
 {
     public class Guitar
     {
-        #region Internal attributes
+        #region Internal attributes        
 
-        private static int LastId = 0;
-
-        public int Id { get; private set; }
+        [Key]
+        [Column("GuitarId")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
 
         [DisplayName("Model")]
         [MinLength(5)]
@@ -24,7 +26,8 @@ namespace MusicStore.Models
 
         [DisplayName("Item Price")]
         [Range(0, 10000)]
-        public double Price { get; set; }
+        [DisplayFormat(DataFormatString = "{0:0.00}")]
+        public decimal Price { get; set; }
 
         [Range(1950, 2021)]
         public int Year { get; set; }
@@ -33,13 +36,13 @@ namespace MusicStore.Models
         [MaxLength(300)]
         public string Description { get; set; }   
         
+        [NotMapped]
         public List<string> Errors { get; private set; }
 
         #endregion 
 
         public Guitar()
         {
-            Id = ++LastId;
             Errors = new List<string>();
         }
 
@@ -51,7 +54,14 @@ namespace MusicStore.Models
             ValidateName();
             ValidateYear();
             ValidateDescription();
+            ValidatePrice();
             return Errors.Count == 0;
+        }
+
+        private void ValidatePrice()
+        {
+            if (Price <= 0 || Price >= 10000)
+                Errors.Add("Price must be a value between 0 and 10000");
         }
 
         private void ValidateName()

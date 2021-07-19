@@ -7,9 +7,16 @@ namespace MusicStore.Controllers
 {
     public class GuitarController : Controller
     {
+        private IGuitarRepository Repository { get; set; }
+
+        public GuitarController(IGuitarRepository repository)
+        {
+            Repository = repository;
+        }
+
         public ActionResult Index()
         {
-            var guitars = Repository.GuitarCollection;
+            var guitars = Repository.GetAllGuitars();
             return View(guitars);
         }
 

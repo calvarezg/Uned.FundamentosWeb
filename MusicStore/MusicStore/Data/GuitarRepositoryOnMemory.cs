@@ -1,13 +1,15 @@
 ﻿using MusicStore.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace MusicStore.Data
 {
-    public class Repository
-    {
+    public class GuitarRepositoryOnMemory : IGuitarRepository
+    {        
         private static List<Guitar> guitars = null;
-        public static List<Guitar> GuitarCollection
+        private static List<Guitar> GuitarCollection
         {
             get
             {
@@ -22,30 +24,35 @@ namespace MusicStore.Data
                 return guitars;
             }
         }
+        public List<Guitar> GetAllGuitars()
+        {
+            return GuitarCollection;
 
-        internal static void Add(Guitar guitar)
+        }
+
+        public void Add(Guitar guitar)
         {
             GuitarCollection.Add(guitar);
         }
 
-        public static Guitar GetById(int id)
+        public Guitar GetById(int id)
         {
             var query = from guitar in GuitarCollection
-                        where guitar.Id == id 
+                        where guitar.Id == id
                         select guitar;
             return query.FirstOrDefault();
         }
 
-        public static IEnumerable<Guitar> GetGuitarsByName(string filter)
+        public List<Guitar> GetGuitarsByName(string filter)
         {
             var nameFilter = filter ?? string.Empty;
             var guitars = from guitar in GuitarCollection
-                          where guitar.Name.Contains(nameFilter.Trim(), System.StringComparison.InvariantCultureIgnoreCase)
+                          where guitar.Name.Contains(nameFilter.Trim(), StringComparison.InvariantCultureIgnoreCase)
                           select guitar;
             return guitars.ToList();
         }
 
-        internal static void Update(int id, Guitar guitarFromUser)
+        public void Update(int id, Guitar guitarFromUser)
         {
             var guitarFromRepository = GetById(id);
             guitarFromRepository.Name = guitarFromUser.Name;
